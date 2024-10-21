@@ -4,6 +4,26 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     const userType = document.getElementById("userType");
     const username = document.getElementById("username");
     const password = document.getElementById("password");
+
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const createAccountLink = document.getElementById('createAccountLink');
+        const backToLoginLink = document.getElementById('backToLoginLink');
+        const loginForm = document.getElementById('loginForm');
+        const createAccountForm = document.getElementById('createAccountForm');
+    
+        createAccountLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            loginForm.style.display = 'none'; // Hide login form
+            createAccountForm.style.display = 'block'; // Show create account form
+        });
+    
+        backToLoginLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default link behavior
+            createAccountForm.style.display = 'none'; // Hide create account form
+            loginForm.style.display = 'block'; // Show login form
+        });
+    });
     
     // Check if any field is empty
     if (userType.value === "" || username.value === "" || password.value === "") {

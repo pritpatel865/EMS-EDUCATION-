@@ -10,10 +10,11 @@
 <body>
     <div class="background-image"></div>
     <div class="login-container">
+        <!-- Login form -->
         <form id="loginForm">
             <h2>Login</h2>
             <div class="input-field">
-                <select id="userType">
+                <select id="userType" required>
                     <option value="" disabled selected>Select User Type</option>
                     <option value="Student">Student</option>
                     <option value="Parent">Parent</option>
@@ -22,18 +23,39 @@
                 </select>
             </div>
             <div class="input-field">
-                <input type="text" id="username" required>
+                <input type="text" id="username" placeholder=" " required>
                 <label for="username">Username</label>
             </div>
             <div class="input-field">
-                <input type="password" id="password" required>
+                <input type="password" id="password" placeholder=" " required>
                 <label for="password">Password</label>
             </div>
             <div class="options">
-                <p>Don't have an account? <a href="#">Create one now</a></p>
+                <p>Don't have an account? <a href="#">Create one</a></p>
                 <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
             <button type="submit" class="login-btn">Login</button>
+        </form>
+
+
+        <!-- Registration form -->
+        <form id="createAccountForm" style="display:none;">
+            <button id="backButton" type="button" class="back-btn">&larr; Back</button>
+            <h2>Create Account</h2>
+            <div class="input-field">
+                <input type="text" id="newUsername" required>
+                <label for="newUsername">Username</label>
+            </div>
+            <div class="input-field">
+                <input type="email" id="newEmail" required>
+                <label for="newEmail">Email</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="newPassword" required>
+                <label for="newPassword">Password</label>
+            </div>
+            <button type="submit" class="login-btn">Create Account</button>
+            <p>Already have an account? <a href="#" id="backToLoginLink">Back to Login</a></p>
         </form>
     </div>
 </body>
