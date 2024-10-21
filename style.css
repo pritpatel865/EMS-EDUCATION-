@@ -62,12 +62,18 @@
     }
 }
 
-/* Hero Section */
-.hero-content{
-    background-image: url(img/hero.bg.jpg); /* Update path accordingly */
+/* hero */
+.hero{
+    background-image: url(img/hero.bg.webp); /* Update path accordingly */
     background-size: cover;
     background-position: center;
     height: 100vh;
+    
+
+}
+/* Hero Section */
+.hero-content{
+    height: 20vh;
     display: flex;
     align-items:last baseline;
     justify-content: center;
@@ -136,14 +142,52 @@
     transform: scale(1.05);
 }
 
-.image-placeholder {
+.image-placeholder1 {
     width: 80px;
     height: 80px;
-    background-color: #bdc3c7;
+    background-image: url(img/mongodb.png);
+    background-size: contain; /* Change this to control the size */
+    background-position: center;
+    background-repeat: no-repeat;
     margin: auto;
     border-radius: 50%;
     margin-bottom: 10px;
 }
+.image-placeholder2 {
+    width: 80px;
+    height: 80px;
+    background-image: url(img/js.png);
+    background-size: contain; /* Change this to control the size */
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.image-placeholder3 {
+    width: 80px;
+    height: 80px;
+    background-image: url(img/botpress.png);
+    background-size: contain; /* Change this to control the size */
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.image-placeholder4 {
+    width: 80px;
+    height: 80px;
+    background-image: url(img/html,css.jpeg);
+    background-size: contain; /* Change this to control the size */
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+
 
 .chatbot-placeholder {
     height: 300px;
