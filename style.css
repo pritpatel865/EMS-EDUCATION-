@@ -499,3 +499,44 @@
         width: 90%;
     }
 }
+/* Chatbot Icon Styles */
+.chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000; /* Ensure it's above other elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e67e22;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.chatbot-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.chatbot-icon img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chatbot-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .chatbot-icon img {
+        width: 30px;
+        height: 30px;
+    }
+}
