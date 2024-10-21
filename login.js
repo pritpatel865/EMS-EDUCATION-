@@ -1,45 +1,37 @@
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent form submission
     
-    const userType = document.getElementById("userType");
-    const username = document.getElementById("username");
-    const password = document.getElementById("password");
+    //code on submit click
 
+});
+
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
     
-    document.addEventListener('DOMContentLoaded', () => {
-        const createAccountLink = document.getElementById('createAccountLink');
-        const backToLoginLink = document.getElementById('backToLoginLink');
-        const loginForm = document.getElementById('loginForm');
-        const createAccountForm = document.getElementById('createAccountForm');
-    
-        createAccountLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent the default link behavior
-            loginForm.style.display = 'none'; // Hide login form
-            createAccountForm.style.display = 'block'; // Show create account form
-        });
-    
-        backToLoginLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent the default link behavior
-            createAccountForm.style.display = 'none'; // Hide create account form
-            loginForm.style.display = 'block'; // Show login form
-        });
-    });
-    
-    // Check if any field is empty
-    if (userType.value === "" || username.value === "" || password.value === "") {
-        alert("Please fill in all fields");
-        
-        // Focus on the first empty field
-        if (userType.value === "") {
-            userType.focus();
-        } else if (username.value === "") {
-            username.focus();
-        } else {
-            password.focus();
-        }
-        
-        return;
+    const passwordInput = document.getElementById('newPassword');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        alert("Passwords do not match. Please try again.");
+        confirmPasswordInput.focus();
+        event.preventDefault();
+    } else {
+        alert("account has been created");
+        document.getElementById("registrationForm").classList.add("hidden"); // Hide registration form
+        document.getElementById("loginForm").classList.remove("hidden"); // Show login form
     }
-    
 
+});
+
+// Show registration form and hide login form
+document.getElementById("create-account-link").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    document.getElementById("loginForm").classList.add("hidden"); // Hide login form
+    document.getElementById("registrationForm").classList.remove("hidden"); // Show registration form
+});
+
+// Show login form and hide registration form
+document.getElementById("backToLoginLink").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    document.getElementById("registrationForm").classList.add("hidden"); // Hide registration form
+    document.getElementById("loginForm").classList.remove("hidden"); // Show login form
 });

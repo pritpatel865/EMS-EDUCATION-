@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex; /* Enable flexbox */
+    flex-direction: column;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    padding: 20px; /* Add padding to create space around the container */
+}
+
 /* Background Image */
 .background-image {
     position: fixed;
@@ -19,10 +29,7 @@
 /* Login Container Styling */
 .login-container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     padding: 40px;
@@ -36,6 +43,11 @@ form h2 {
     margin-bottom: 20px;
     color: #000000;
     font-weight: 600;
+}
+
+table {
+    border-width: 2px;
+    width: 100%;
 }
 
 .input-field {
@@ -89,12 +101,13 @@ label {
     color: #000000;
     border: none;
     padding: 10px;
-    width: 50%;
+    min-width: 50%;
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
     font-size: 20px;
     font-weight: bold;
+    display: inline-block; 
 }
 
 .login-btn:hover {
@@ -115,5 +128,19 @@ input:not(:placeholder-shown) + label {
     top: -9px; /* Move label up */
     font-size: 14px; /* Smaller font size for the label */
     color: #000000; /* Color remains the same */
+}
+
+/* registration hidden */
+.hidden {
+    display: none; /* Class to hide elements */
+}
+
+.inline-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inline-inputs input {
+    width: 100%; /* Adjust the width of each input field */
 }
 

@@ -11,7 +11,7 @@
     <div class="background-image"></div>
     <div class="login-container">
         <!-- Login form -->
-        <form id="loginForm">
+        <form id="loginForm" class="">
             <h2>Login</h2>
             <div class="input-field">
                 <select id="userType" required>
@@ -31,31 +31,70 @@
                 <label for="password">Password</label>
             </div>
             <div class="options">
-                <p>Don't have an account? <a href="#">Create one</a></p>
+                <p>Don't have an account? <a href="#" id="create-account-link">Create one</a></p>
                 <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
 
 
-        <!-- Registration form -->
-        <form id="createAccountForm" style="display:none;">
-            <button id="backButton" type="button" class="back-btn">&larr; Back</button>
+        <!-- Account creation form -->
+        <form id="registrationForm" class="hidden">
             <h2>Create Account</h2>
             <div class="input-field">
-                <input type="text" id="newUsername" required>
-                <label for="newUsername">Username</label>
+                <select id="newUserType" required>
+                    <option value="" disabled selected>Select User Type</option>
+                    <option value="Student">Student</option>
+                    <option value="Parent">Parent</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+            <div class="inline-inputs">
+                <div class="input-field">
+                    <input type="text" id="firstName" placeholder=" " required>
+                    <label for="firstName">First Name</label>
+                </div>
+                &nbsp; &nbsp; &nbsp;    
+                <div class="input-field">
+                    <input type="text" id="lastName" placeholder=" " required>
+                    <label for="lastName">Last Name</label>
+                </div>
             </div>
             <div class="input-field">
-                <input type="email" id="newEmail" required>
-                <label for="newEmail">Email</label>
+                <input type="tel" id="mobileNo" placeholder=" " pattern="\d{10}" maxlength="10" required>
+                <label for="mobileNo">Mobile No</label>
             </div>
             <div class="input-field">
-                <input type="password" id="newPassword" required>
-                <label for="newPassword">Password</label>
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">Email ID</label>
+            </div>
+            <div class="input-field">
+                <input type="text" id="newUserName" placeholder=" " required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="newPassword" placeholder=" " required>
+                <label for="password">Password</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="confirmPassword" placeholder=" " required>
+                <label for="confirmPassword">Confirm Password</label>
+            </div>
+            <div class="input-field">
+                <select id="institute" required>
+                    <option value="" disabled selected>Select Institute</option>
+                    <option value="Institute 1">Sardar Patel College Of Engineering</option>
+                    <option value="Institute 2">Sardar Patel College Of Commerce</option>
+                    <option value="Institute 3">Sardar Patel College Of Applied Science</option>
+                    <option value="Institute 4">Sardar Patel College Of Pharmacy</option>
+                </select>
+            </div>
+            <div class="options">
+                <p>Already have an account? <a href="#" id="backToLoginLink">Back to Login</a></p>
             </div>
             <button type="submit" class="login-btn">Create Account</button>
-            <p>Already have an account? <a href="#" id="backToLoginLink">Back to Login</a></p>
+            
         </form>
     </div>
 </body>
