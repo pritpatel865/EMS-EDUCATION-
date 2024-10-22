@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="background-image"></div>
-    <div class="login-container">
+    <div class="login-container" id="login-containerId">
         <!-- Login form -->
         <form id="loginForm" class="">
             <h2>Login</h2>
@@ -36,50 +36,52 @@
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
+    </div>
 
-
+    <div class="register-container hidden" id="register-containerId">
         <!-- Account creation form -->
         <form id="registrationForm" class="hidden">
             <h2>Create Account</h2>
-            <div class="input-field">
-                <select id="newUserType" required>
-                    <option value="" disabled selected>Select User Type</option>
-                    <option value="Student">Student</option>
-                    <option value="Parent">Parent</option>
-                    <option value="Faculty">Faculty</option>
-                    <option value="Admin">Admin</option>
-                </select>
-            </div>
-            <div class="inline-inputs">
-                <div class="input-field">
-                    <input type="text" id="firstName" placeholder=" " required>
-                    <label for="firstName">First Name</label>
+            <div class="input-container">
+                <div class="inline-input" >
+                        <div class="input-field">
+                        <input type="text" id="firstName" placeholder=" " required>
+                        <label for="firstName">First Name</label>
+                    </div>    
+                    <div class="input-field">
+                        <input type="text" id="lastName" placeholder=" " required>
+                        <label for="lastName">Last Name</label>
+                    </div>
                 </div>
-                &nbsp; &nbsp; &nbsp;    
                 <div class="input-field">
-                    <input type="text" id="lastName" placeholder=" " required>
-                    <label for="lastName">Last Name</label>
+                    <input type="tel" id="mobileNo" placeholder=" " pattern="\d{10}" maxlength="10" required>
+                    <label for="mobileNo">Mobile No</label>
                 </div>
-            </div>
-            <div class="input-field">
-                <input type="tel" id="mobileNo" placeholder=" " pattern="\d{10}" maxlength="10" required>
-                <label for="mobileNo">Mobile No</label>
-            </div>
-            <div class="input-field">
-                <input type="email" id="email" placeholder=" " required>
-                <label for="email">Email ID</label>
-            </div>
-            <div class="input-field">
-                <input type="text" id="newUserName" placeholder=" " required>
-                <label for="username">Username</label>
-            </div>
-            <div class="input-field">
-                <input type="password" id="newPassword" placeholder=" " required>
-                <label for="password">Password</label>
-            </div>
-            <div class="input-field">
-                <input type="password" id="confirmPassword" placeholder=" " required>
-                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-field">
+                    <input type="email" id="email" placeholder=" " required>
+                    <label for="email">Email ID</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="newUserName" placeholder=" " required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="newPassword" placeholder=" " required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="confirmPassword" placeholder=" " required>
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
+                <div class="input-field">
+                    <select id="newUserType" required>
+                        <option value="" disabled selected>Select User Type</option>
+                        <option value="Student">Student</option>
+                        <option value="Parent">Parent</option>
+                        <option value="Faculty">Faculty</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
             </div>
             <div class="input-field">
                 <select id="institute" required>
@@ -94,7 +96,6 @@
                 <p>Already have an account? <a href="#" id="backToLoginLink">Back to Login</a></p>
             </div>
             <button type="submit" class="login-btn">Create Account</button>
-            
         </form>
     </div>
 </body>

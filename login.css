@@ -12,7 +12,6 @@ body {
     align-items: center; /* Center vertically */
     height: 100vh; /* Full viewport height */
     margin: 0; /* Remove default margin */
-    padding: 20px; /* Add padding to create space around the container */
 }
 
 /* Background Image */
@@ -22,9 +21,19 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('img/hero.bg.webp') no-repeat center center/cover;
+    background: url('img/img2.jpg') no-repeat center center/cover;
     z-index: -1;
+    animation: fadeIn 1s ease-in-out;
 }
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
 /* Login Container Styling */
 .login-container {
@@ -33,9 +42,32 @@ body {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     padding: 40px;
-    width: 90%;
-    max-width: 400px;
+    width: 400px;
     text-align: center;
+}
+
+/* Media query for screens 490px or less */
+@media (max-width: 490px) {
+    .login-container {
+        width: 90%; /* Set width to 80% */
+    }
+}
+
+.register-container {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    width: 400px;
+    text-align: center;
+}
+
+/* Media query for screens 400px or less */
+@media (max-width: 490px) {
+    .register-container {
+        width: 90%; /* Set width to 90% */
+    }
 }
 
 /* Form Elements */
@@ -43,11 +75,6 @@ form h2 {
     margin-bottom: 20px;
     color: #000000;
     font-weight: 600;
-}
-
-table {
-    border-width: 2px;
-    width: 100%;
 }
 
 .input-field {
@@ -114,14 +141,6 @@ label {
     background-color: #0056b3;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
-    .login-container {
-        width: 100%;
-        padding: 20px;
-    }
-}
-
 /* Animation for label on input focus and non-empty state */
 input:focus + label,
 input:not(:placeholder-shown) + label {
@@ -137,10 +156,8 @@ input:not(:placeholder-shown) + label {
 
 .inline-inputs {
     display: flex;
-    justify-content: space-between;
 }
 
 .inline-inputs input {
     width: 100%; /* Adjust the width of each input field */
 }
-

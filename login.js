@@ -27,6 +27,8 @@ document.getElementById("create-account-link").addEventListener("click", functio
     event.preventDefault(); // Prevent default anchor behavior
     document.getElementById("loginForm").classList.add("hidden"); // Hide login form
     document.getElementById("registrationForm").classList.remove("hidden"); // Show registration form
+    document.getElementById("login-containerId").classList.add("hidden");
+    document.getElementById("register-containerId").classList.remove("hidden");
 });
 
 // Show login form and hide registration form
@@ -34,4 +36,6 @@ document.getElementById("backToLoginLink").addEventListener("click", function(ev
     event.preventDefault(); // Prevent default anchor behavior
     document.getElementById("registrationForm").classList.add("hidden"); // Hide registration form
     document.getElementById("loginForm").classList.remove("hidden"); // Show login form
+    document.getElementById("login-containerId").classList.remove("hidden");
+    document.getElementById("register-containerId").classList.add("hidden");
 });
