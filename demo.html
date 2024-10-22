@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efficient Management System for Education</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Edu<span class="unique-e">E</span>fficient</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Empowering Education</h1>
+            <p>Your digital companion for streamlined learning management.</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Key Features</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <h3>Attendance Management</h3>
+                <p>Monitor student attendance with automated alerts.</p>
+            </div>
+            <div class="card">
+                <h3>Fee Management</h3>
+                <p>Track and analyze payment records in real-time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology" id="technology">
+        <h2>Technology Used</h2>
+        <div class="feature-cards">
+            <div class="card">
+                <div class="image-placeholder1"></div>
+                <h3>MongoDB</h3>
+                <p>Used for efficient data storage.</p>
+            </div>
+            <div class="card">
+                <div class="image-placeholder2"></div>
+                <h3>JavaScript</h3>
+                <p>Backend development and interactivity.</p>
+            </div>
+            <div class="card">
+                <div class="image-placeholder3"></div>
+                <h3>Botpress</h3>
+                <p>AI-powered chatbot for student assistance.</p>
+            </div>
+            <div class="card">
+                <div class="image-placeholder4"></div>
+                <h3>HTML & CSS</h3>
+                <p>Building a responsive and attractive interface.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- College Logos Section -->
+    <section class="affiliated-logos" id="affiliated">
+        <h2>Our Partner Institutions</h2>
+        <div class="logo-container">
+            <img src="img/college1.png" alt="College 1 Logo">
+            <img src="img/college2.png" alt="College 2 Logo">
+            <img src="img/college3.png" alt="College 3 Logo">
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <h2>Meet Our Team</h2>
+        <p>We are a passionate team of five members dedicated to creating innovative solutions for education.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#technology">Technology</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>APC, VVN, Gujarat</p>
+                <p>+91 8683045908</p>
+                <p>PritPatel@gmail.com</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Subscribe to our Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Prit Patel, All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>
