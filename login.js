@@ -36,22 +36,48 @@ document.addEventListener('DOMContentLoaded', function() {
         facultyFields.classList.add('hidden');
         adminFields.classList.add('hidden');
 
+        // Reset required attributes
+        resetRequiredAttributes();
+
         // Show the relevant fields based on selected user type
         switch (userTypeSelect.value) {
             case 'Student':
                 studentFields.classList.remove('hidden');
+                setRequiredAttributes(studentFields, true);
                 break;
             case 'Parent':
                 parentFields.classList.remove('hidden');
+                setRequiredAttributes(parentFields, true);
                 break;
             case 'Faculty':
                 facultyFields.classList.remove('hidden');
+                setRequiredAttributes(facultyFields, true);
                 break;
             case 'Admin':
                 adminFields.classList.remove('hidden');
+                setRequiredAttributes(adminFields, true);
                 break;
         }
     });
+
+    // Reset all required attributes for hidden fields
+    function resetRequiredAttributes() {
+        const allFields = [studentFields, parentFields, facultyFields, adminFields];
+        allFields.forEach(fieldGroup => {
+            const inputs = fieldGroup.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.required = false; // Remove required attribute
+            });
+        });
+    }
+
+    // Set required attributes for visible fields
+    function setRequiredAttributes(fieldGroup, required) {
+        const inputs = fieldGroup.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.required = required; // Set required attribute based on visibility
+        });
+    }
 });
 
 // Show registration form and hide login form
