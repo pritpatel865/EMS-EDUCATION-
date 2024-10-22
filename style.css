@@ -116,7 +116,7 @@
     border: none;
     cursor: pointer;
     transition: background 0.3s;
-    border-radius: 15%;
+    border-radius: 15px;
 }
 
 .cta-button:hover {
@@ -149,10 +149,10 @@
 }
 
 .image-placeholder1 {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background-image: url(img/mongodb.png);
-    background-size: contain; /* Change this to control the size */
+    background-size:contain; /* Change this to control the size */
     background-position: center;
     background-repeat: no-repeat;
     margin: auto;
@@ -503,13 +503,13 @@
 .chatbot-icon {
     position: fixed;
     bottom: 20px;
-    left: 20px;
+    right: 20px;
     z-index: 1000; /* Ensure it's above other elements */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-color: #e67e22;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -523,8 +523,8 @@
 }
 
 .chatbot-icon img {
-    width: 35px;
-    height: 35px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
