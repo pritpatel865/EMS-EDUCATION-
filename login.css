@@ -11,7 +11,6 @@ body {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     min-height: 100vh;
-    /* height: 100vh; */
     margin: 0; /* Remove default margin */
     overflow: auto;
 }
@@ -56,7 +55,6 @@ body {
 }
 
 .register-container {
-    display: flex;
     position: relative;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
@@ -156,12 +154,4 @@ input:not(:placeholder-shown) + label {
 /* registration hidden */
 .hidden {
     display: none; /* Class to hide elements */
-}
-
-.inline-inputs {
-    display: flex;
-}
-
-.inline-inputs input {
-    width: 100%; /* Adjust the width of each input field */
 }

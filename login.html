@@ -42,55 +42,131 @@
         <!-- Account creation form -->
         <form id="registrationForm" class="hidden">
             <h2>Create Account</h2>
-            <div class="input-container">
-                <div class="inline-input" >
-                        <div class="input-field">
-                        <input type="text" id="firstName" placeholder=" " required>
-                        <label for="firstName">First Name</label>
-                    </div>    
-                    <div class="input-field">
-                        <input type="text" id="lastName" placeholder=" " required>
-                        <label for="lastName">Last Name</label>
-                    </div>
+            <div class="input-field">
+                <select id="newUserType" required>
+                    <option value="" disabled selected>Select User Type</option>
+                    <option value="Student">Student</option>
+                    <option value="Parent">Parent</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <input type="text" id="firstName" placeholder=" " required>
+                <label for="firstName">First Name</label>
+            </div>    
+            <div class="input-field">
+                <input type="text" id="lastName" placeholder=" " required>
+                <label for="lastName">Last Name</label>
+            </div>
+            <div id="studentFields" class="hidden">
+                <div class="input-field">
+                    <input type="text" id="enrollmentNo" placeholder=" " required>
+                    <label for="enrollmentNo">Enrollment No</label>
                 </div>
                 <div class="input-field">
-                    <input type="tel" id="mobileNo" placeholder=" " pattern="\d{10}" maxlength="10" required>
-                    <label for="mobileNo">Mobile No</label>
+                    <select id="institute" required>
+                        <option value="" disabled selected>Select Institute</option>
+                        <option value="Institute 1">Sardar Patel College Of Engineering</option>
+                        <option value="Institute 2">Sardar Patel College Of Commerce</option>
+                        <option value="Institute 3">Sardar Patel College Of Applied Science</option>
+                        <option value="Institute 4">Sardar Patel College Of Pharmacy</option>
+                    </select>
                 </div>
                 <div class="input-field">
-                    <input type="email" id="email" placeholder=" " required>
-                    <label for="email">Email ID</label>
+                    <select id="branch" required>
+                        <option value="" disabled selected>Select Branch</option>
+                        <option value="comp">Computer Engineering</option>
+                        <option value="it">Inforation Technology</option>
+                        <option value="mech">Mechanincal Engineering</option>
+                        <option value="electric">Electrical Engineering</option>
+                        <option value="civil">Civil Engineering</option>
+                    </select>
                 </div>
                 <div class="input-field">
-                    <input type="text" id="newUserName" placeholder=" " required>
-                    <label for="username">Username</label>
+                    <select id="sem" required>
+                        <option value="" disabled selected>Select Semester</option>
+                        <option value="1">Sem 1</option>
+                        <option value="2">Sem 2</option>
+                        <option value="3">Sem 3</option>
+                        <option value="4">Sem 4</option>
+                        <option value="5">Sem 5</option>
+                        <option value="6">Sem 6</option>
+                        <option value="7">Sem 7</option>
+                        <option value="8">Sem 8</option>
+                    </select>
+                </div>
+            </div>
+            <div id="parentFields" class="hidden">
+                <div class="input-field">
+                    <input type="text" id="stdEnrollmentNo" placeholder=" " required>
+                    <label for="enrollmentNo">Student Enrollment No</label>
                 </div>
                 <div class="input-field">
-                    <input type="password" id="newPassword" placeholder=" " required>
-                    <label for="password">Password</label>
+                    <select id="stdInstitute" required>
+                        <option value="" disabled selected>Select Student Institute</option>
+                        <option value="Institute 1">Sardar Patel College Of Engineering</option>
+                        <option value="Institute 2">Sardar Patel College Of Commerce</option>
+                        <option value="Institute 3">Sardar Patel College Of Applied Science</option>
+                        <option value="Institute 4">Sardar Patel College Of Pharmacy</option>
+                    </select>
+                </div>
+            </div>
+            <div id="facultyFields" class="hidden">
+                <div class="input-field">
+                    <input type="text" id="facEmployeeNo" placeholder=" " required>
+                    <label for="enrollmentNo">Employee No</label>
                 </div>
                 <div class="input-field">
-                    <input type="password" id="confirmPassword" placeholder=" " required>
-                    <label for="confirmPassword">Confirm Password</label>
+                    <select id="facInstitute" required>
+                        <option value="" disabled selected>Select Institute</option>
+                        <option value="Institute 1">Sardar Patel College Of Engineering</option>
+                        <option value="Institute 2">Sardar Patel College Of Commerce</option>
+                        <option value="Institute 3">Sardar Patel College Of Applied Science</option>
+                        <option value="Institute 4">Sardar Patel College Of Pharmacy</option>
+                    </select>
                 </div>
                 <div class="input-field">
-                    <select id="newUserType" required>
-                        <option value="" disabled selected>Select User Type</option>
-                        <option value="Student">Student</option>
-                        <option value="Parent">Parent</option>
-                        <option value="Faculty">Faculty</option>
-                        <option value="Admin">Admin</option>
+                    <select id="facBranch" required>
+                        <option value="" disabled selected>Select Branch</option>
+                        <option value="comp">Computer Engineering</option>
+                        <option value="it">Inforation Technology</option>
+                        <option value="mech">Mechanincal Engineering</option>
+                        <option value="electric">Electrical Engineering</option>
+                        <option value="civil">Civil Engineering</option>
+                    </select>
+                </div>
+            </div>
+            <div id="adminFields" class="hidden">
+                <div class="input-field">
+                    <input type="text" id="adEmployeeNo" placeholder=" " required>
+                    <label for="enrollmentNo">Employee No</label>
+                </div>
+                <div class="input-field">
+                    <select id="adInstitute" required>
+                        <option value="" disabled selected>Select Institute</option>
+                        <option value="Institute 1">Sardar Patel College Of Engineering</option>
+                        <option value="Institute 2">Sardar Patel College Of Commerce</option>
+                        <option value="Institute 3">Sardar Patel College Of Applied Science</option>
+                        <option value="Institute 4">Sardar Patel College Of Pharmacy</option>
                     </select>
                 </div>
             </div>
             <div class="input-field">
-                <select id="institute" required>
-                    <option value="" disabled selected>Select Institute</option>
-                    <option value="Institute 1">Sardar Patel College Of Engineering</option>
-                    <option value="Institute 2">Sardar Patel College Of Commerce</option>
-                    <option value="Institute 3">Sardar Patel College Of Applied Science</option>
-                    <option value="Institute 4">Sardar Patel College Of Pharmacy</option>
-                </select>
+                <input type="tel" id="mobileNo" placeholder=" " pattern="\d{10}" maxlength="10" required>
+                <label for="mobileNo">Mobile No</label>
+            </div>
+            <div class="input-field">
+                <input type="email" id="email" placeholder=" " required>
+                <label for="email">Email ID</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="newPassword" placeholder=" " required>
+                <label for="password">Password</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="confirmPassword" placeholder=" " required>
+                <label for="confirmPassword">Confirm Password</label>
             </div>
             <div class="options">
                 <p>Already have an account? <a href="#" id="backToLoginLink">Back to Login</a></p>

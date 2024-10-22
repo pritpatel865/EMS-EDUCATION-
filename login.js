@@ -22,6 +22,38 @@ document.getElementById('registrationForm').addEventListener('submit', function(
 
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const userTypeSelect = document.getElementById('newUserType');
+    const studentFields = document.getElementById('studentFields');
+    const parentFields = document.getElementById('parentFields');
+    const facultyFields = document.getElementById('facultyFields');
+    const adminFields = document.getElementById('adminFields');
+
+    userTypeSelect.addEventListener('change', function() {
+        // Hide all conditional fields initially
+        studentFields.classList.add('hidden');
+        parentFields.classList.add('hidden');
+        facultyFields.classList.add('hidden');
+        adminFields.classList.add('hidden');
+
+        // Show the relevant fields based on selected user type
+        switch (userTypeSelect.value) {
+            case 'Student':
+                studentFields.classList.remove('hidden');
+                break;
+            case 'Parent':
+                parentFields.classList.remove('hidden');
+                break;
+            case 'Faculty':
+                facultyFields.classList.remove('hidden');
+                break;
+            case 'Admin':
+                adminFields.classList.remove('hidden');
+                break;
+        }
+    });
+});
+
 // Show registration form and hide login form
 document.getElementById("create-account-link").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent default anchor behavior
