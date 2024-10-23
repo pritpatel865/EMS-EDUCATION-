@@ -184,7 +184,7 @@
 .image-placeholder4 {
     width: 80px;
     height: 80px;
-    background-image: url(img/html,css.jpeg);
+    background-image: url(img/html\,css.jpeg);
     background-size: contain; /* Change this to control the size */
     background-position: center;
     background-repeat: no-repeat;
