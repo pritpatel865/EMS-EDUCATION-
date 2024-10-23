@@ -1,0 +1,148 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0275d8;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+.navbar .unique-e {
+    font-family: 'Courier New', Courier, monospace;
+    color: #e67e22; /* Unique style for 'E' */
+    font-style: italic;
+}
+.navbar .logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.navbar .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #025aa5;
+    color: #fff;
+    border-radius: 8px;
+    margin: 20px;
+    animation: fadeIn 1s;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 0.5rem solid #e67e22;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 30px;
+    width: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* Chatbot Icon */
+.chatbot-icon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e67e22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.chatbot-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.chatbot-icon img {
+    width: 35px;
+    height: 35px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        margin: 10px 0;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.profile-image{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
