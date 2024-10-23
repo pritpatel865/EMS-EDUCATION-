@@ -116,7 +116,7 @@
     border: none;
     cursor: pointer;
     transition: background 0.3s;
-    border-radius: 15%;
+    border-radius: 15px;
 }
 
 .cta-button:hover {
@@ -149,10 +149,10 @@
 }
 
 .image-placeholder1 {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background-image: url(img/mongodb.png);
-    background-size: contain; /* Change this to control the size */
+    background-size:contain; /* Change this to control the size */
     background-position: center;
     background-repeat: no-repeat;
     margin: auto;
@@ -184,7 +184,7 @@
 .image-placeholder4 {
     width: 80px;
     height: 80px;
-    background-image: url(img/html,css.jpeg);
+    background-image: url(img/html\,css.jpeg);
     background-size: contain; /* Change this to control the size */
     background-position: center;
     background-repeat: no-repeat;
@@ -499,44 +499,4 @@
         width: 90%;
     }
 }
-/* Chatbot Icon Styles */
-.chatbot-icon {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 1000; /* Ensure it's above other elements */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #e67e22;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-}
-
-.chatbot-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-}
-
-.chatbot-icon img {
-    width: 35px;
-    height: 35px;
-    object-fit: contain;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .chatbot-icon {
-        width: 50px;
-        height: 50px;
-    }
-
-    .chatbot-icon img {
-        width: 30px;
-        height: 30px;
-    }
-}
+/* Chatbot Icon Styles *
