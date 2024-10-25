@@ -8,14 +8,13 @@
     <title>Login Page</title>
 </head>
 <body>
-    
     <div class="background-image"></div>   
     <div class="login-container" id="login-containerId">
         <!-- Login form -->
         <form id="loginForm" class="">
             <h2>Login</h2>
             <div class="input-field">
-                <select id="userType" required>
+                <select id="userType" onchange="updateUsernameField()" required>
                     <option value="" disabled selected>Select User Type</option>
                     <option value="Student">Student</option>
                     <option value="Parent">Parent</option>
@@ -25,7 +24,7 @@
             </div>
             <div class="input-field">
                 <input type="text" id="username" placeholder=" " required>
-                <label for="username">Username</label>
+                <label for="username" id="usernameLabel">Username</label>
             </div>
             <div class="input-field">
                 <input type="password" id="password" placeholder=" " required>
@@ -66,7 +65,7 @@
                     <label for="enrollmentNo">Enrollment No</label>
                 </div>
                 <div class="input-field">
-                    <select id="institute" required>
+                    <select id="institute" onchange="stuUpdateBranchOption()" required>
                         <option value="" disabled selected>Select Institute</option>
                         <option value="Institute 1">Sardar Patel College Of Engineering</option>
                         <option value="Institute 2">Sardar Patel College Of Commerce</option>
@@ -75,13 +74,8 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <select id="branch" required>
+                        <select id="stubranch" required>
                         <option value="" disabled selected>Select Branch</option>
-                        <option value="comp">Computer Engineering</option>
-                        <option value="it">Inforation Technology</option>
-                        <option value="mech">Mechanincal Engineering</option>
-                        <option value="electric">Electrical Engineering</option>
-                        <option value="civil">Civil Engineering</option>
                     </select>
                 </div>
                 <div class="input-field">
@@ -119,7 +113,7 @@
                     <label for="enrollmentNo">Employee No</label>
                 </div>
                 <div class="input-field">
-                    <select id="facInstitute" required>
+                    <select id="facInstitute" onchange="facUpdateBranchOption()" required>
                         <option value="" disabled selected>Select Institute</option>
                         <option value="Institute 1">Sardar Patel College Of Engineering</option>
                         <option value="Institute 2">Sardar Patel College Of Commerce</option>
@@ -128,13 +122,8 @@
                     </select>
                 </div>
                 <div class="input-field">
-                    <select id="facBranch" required>
-                        <option value="" disabled selected>Select Branch</option>
-                        <option value="comp">Computer Engineering</option>
-                        <option value="it">Inforation Technology</option>
-                        <option value="mech">Mechanincal Engineering</option>
-                        <option value="electric">Electrical Engineering</option>
-                        <option value="civil">Civil Engineering</option>
+                    <select id="facDepartment" required>
+                        <option value="" disabled selected>Select Department</option>
                     </select>
                 </div>
             </div>

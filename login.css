@@ -38,13 +38,14 @@ body {
 
 /* Login Container Styling */
 .login-container {
-    position: absolute;
+    position: relative;
     background: rgba(255, 255, 255, 0.6);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     padding: 40px;
     width: 400px;
     text-align: center;
+    margin: 40px 0px;
 }
 
 /* Media query for screens 490px or less */
@@ -62,7 +63,7 @@ body {
     padding: 40px;
     width: 400px;
     text-align: center; 
-    margin: 150px 0px;
+    margin: 40px 0px;
 }
 
 /* Media query for screens 400px or less */
