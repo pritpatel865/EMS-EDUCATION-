@@ -499,4 +499,29 @@
         width: 90%;
     }
 }
-/* Chatbot Icon Styles *
+/* /* Chatbot Icon Styles  */
+.scroll-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+.scroll-to-top.visible {
+    display: block;
+    opacity: 1;
+}
+.chatbot-placeholder img {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
