@@ -35,7 +35,7 @@
 .nav-links {
     list-style: none;
     display: flex;
-    font-size: 1.8rem;
+    font-size: 2.0rem;
     font-weight:normal;
 }
 
@@ -75,7 +75,7 @@
     /* background-image: url(img/hero.bg.webp); Update path accordingly */
     background-size: cover;
     background-position: center;
-    height: 70vh;
+    height: 90vh;
     width: 100%;
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
@@ -145,7 +145,15 @@
   gap: 20px; /* Space between the cards */
   margin: 20px;
 }
-
+.card{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
 .image-placeholder1 img {
     width: 100px;
     height: 100px;
