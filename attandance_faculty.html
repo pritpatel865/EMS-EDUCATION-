@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - Efficient Management System</title>
+    <link rel="stylesheet" href="dashboard.css">
+
+    <style>
+        @media (max-width: 768px) {
+            .attandance_box {
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+        }
+
+        .attandance_box {
+            margin: 0 auto; /* Centers the box */
+            max-width: 900px;  /* Maximum width of the box */
+            padding: 20px;  /* Optional padding for inner space */
+            box-sizing: border-box;  /* Ensures padding doesn't affect the width */
+            margin-bottom: 70px;
+            text-align: center;
+        }
+
+        .student {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            opacity: 1;
+            display: flex;             /* Arrange items horizontally in a row */
+            align-items: center;       /* Vertically align items */
+            margin-bottom: 10px;       /* Space between rows */
+        }
+
+        /* Hover effect for student row */
+        .student:hover {
+            transform: scale(1.008);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Individual items within the student row */
+        .index {
+            margin-right: 10px;
+            font-weight: bold;
+            text-align: left; /* Align text to the left */
+        }
+
+        .name {
+            margin-left: 0;
+            flex-grow: 1;
+            width: 130px; /* Set a fixed width for the name column */
+            text-align: left; /* Align text to the left */
+        }
+        .enrollment {
+            flex-grow: 2;
+            margin-left: 10px;
+            font-weight: bold;
+            width: 150px; /* Set a fixed width for the enrollment column */
+            text-align: left; /* Align text to the left */
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.2); /* Optional: make checkbox a little larger */
+        }
+
+        .heading {
+            margin: 0 0 15px 0;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Button styling */
+        .submit {
+            align-self: center;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #0275d8;  /* Change this to your desired color */
+            color: white;               /* Text color */
+            border: none;               /* No border */
+            border-radius: 8px;         /* Rounded corners */
+            cursor: pointer;           /* Pointer cursor on hover */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        .submit:hover {
+            background-color: #025aa5; /* Change this to a different color on hover */
+            transform: scale(1.05);
+        }
+
+        /* Optional: Active button state */
+        .submit:active {
+            background-color: #023f6d;  /* Darker color when button is clicked */
+            transform: scale(1);
+        }
+
+        /* Optional: Button focus state */
+        .submit:focus {
+            outline: none;              /* Remove default outline */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+        }
+    </style>
+
+    <!-- Google Font for Better Aesthetics -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Institute Logo">
+            <h2>Faculty Dashboard</h2>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Faculty</span>
+            <img src="img/download.png" alt="User Profile Image" class="user-avatar">
+        </div>
+    </div>
+
+    <!-- Attandance -->
+    <div class="attandance_box">
+        <h1 class="heading">Attandance</h1>
+        <div id="attendanceContainer"></div>
+        <button class="submit">Mark Attendance</button>
+    </div>
+    
+
+
+   <!-- Chatbot Icon -->
+   <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+   <script src="https://files.bpcontent.cloud/2024/10/19/15/20241019152138-BMYUGH6D.js"></script>
+
+
+
+    <script src="script.js"></script>
+    <script>
+        // Sample student data to simulate fetching from a server
+        const students = [
+        { index: 1, name: "John Doe", enrollment: "221240107001" },
+            { index: 2, name: "Jane Smith", enrollment: "221240107002" },
+            { index: 3, name: "Mike Johnson", enrollment: "221240107003" },
+            { index: 4, name: "Emily Davis", enrollment: "221240107004" },
+            { index: 5, name: "Chris Brown", enrollment: "221240107005" },
+            { index: 6, name: "Sarah Wilson", enrollment: "221240107006" },
+            { index: 7, name: "David Moore", enrollment: "221240107007" },
+            { index: 8, name: "Sophia Taylor", enrollment: "221240107008" },
+            { index: 9, name: "James Anderson", enrollment: "221240107009" },
+            { index: 10, name: "Olivia Martinez", enrollment: "221240107010" },
+            { index: 11, name: "Daniel Thomas", enrollment: "221240107011" },
+            { index: 12, name: "Mia Jackson", enrollment: "221240107012" },
+            { index: 13, name: "Henry White", enrollment: "221240107013" },
+            { index: 14, name: "Isabella Harris", enrollment: "221240107014" },
+            { index: 15, name: "Ethan Clark", enrollment: "221240107015" },
+            { index: 16, name: "Liam Rodriguez", enrollment: "221240107016" },
+            { index: 17, name: "Charlotte Lewis", enrollment: "221240107017" },
+            { index: 18, name: "Lucas Walker", enrollment: "221240107018" },
+            { index: 19, name: "Amelia Young", enrollment: "221240107019" },
+            { index: 20, name: "Benjamin King", enrollment: "221240107020" },
+            { index: 21, name: "Harper Scott", enrollment: "221240107021" },
+            { index: 22, name: "Jack Allen", enrollment: "221240107022" },
+            { index: 23, name: "Chloe Nelson", enrollment: "221240107023" },
+            { index: 24, name: "Matthew Carter", enrollment: "221240107024" },
+            { index: 25, name: "Lily Mitchell", enrollment: "221240107025" },
+            { index: 26, name: "Jacob Perez", enrollment: "221240107026" },
+            { index: 27, name: "Ella Roberts", enrollment: "221240107027" },
+            { index: 28, name: "Michael Green", enrollment: "221240107028" },
+            { index: 29, name: "Ava Adams", enrollment: "221240107029" },
+            { index: 30, name: "Ryan Hall", enrollment: "221240107030" },
+            { index: 31, name: "Zoe Wright", enrollment: "221240107031" },
+            { index: 32, name: "Alexander King", enrollment: "221240107032" },
+            { index: 33, name: "Nora Lee", enrollment: "221240107033" },
+            { index: 34, name: "David Harris", enrollment: "221240107034" },
+            { index: 35, name: "Grace Walker", enrollment: "221240107035" },
+            { index: 36, name: "Samuel Lopez", enrollment: "221240107036" },
+            { index: 37, name: "Megan Clark", enrollment: "221240107037" },
+            { index: 38, name: "Caleb Turner", enrollment: "221240107038" },
+            { index: 39, name: "Victoria Martinez", enrollment: "221240107039" },
+            { index: 40, name: "Andrew Lewis", enrollment: "221240107040" },
+            { index: 41, name: "Evelyn Scott", enrollment: "221240107041" },
+            { index: 42, name: "Luke Young", enrollment: "221240107042" },
+            { index: 43, name: "Grace Walker", enrollment: "221240107043" },
+            { index: 44, name: "Jack Lewis", enrollment: "221240107044" },
+            { index: 45, name: "Sophia Clark", enrollment: "221240107045" },
+            { index: 46, name: "Oscar Davis", enrollment: "221240107046" },
+            { index: 47, name: "Liam Harris", enrollment: "221240107047" },
+            { index: 48, name: "Hannah Carter", enrollment: "221240107048" },
+            { index: 49, name: "William Rodriguez", enrollment: "221240107049" },
+            { index: 50, name: "Lucy Wright", enrollment: "221240107050" }
+        ];
+
+        // Function to populate attendance container with student data
+        function loadAttendance() {
+            const attendanceContainer = document.getElementById('attendanceContainer');
+
+            // Clear any existing content
+            attendanceContainer.innerHTML = '';
+
+            // Loop through student data and create HTML for each student
+            students.forEach(student => {
+                const studentDiv = document.createElement('div');
+                studentDiv.classList.add('student');
+                studentDiv.id = `student${student.index}`;
+
+                // Create HTML content for each student
+                studentDiv.innerHTML = `
+                    <span class="index">${student.index}.</span>
+                    <span class="name">${student.name}</span>
+                    <span class="enrollment">${student.enrollment}</span>
+                    <input type="checkbox" id="attendance${student.index}">
+                `;
+
+                // Append the student div to the container
+                attendanceContainer.appendChild(studentDiv);
+            });
+        }
+
+        // Call the function to load the student attendance
+        loadAttendance();
+    </script>
+</body>
+</html>
