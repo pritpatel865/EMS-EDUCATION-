@@ -154,6 +154,7 @@
 }
 .card:hover {
     transform: scale(1.05);
+}
 .image-placeholder1 img {
     width: 100px;
     height: 100px;
