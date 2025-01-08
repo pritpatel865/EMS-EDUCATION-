@@ -8,16 +8,18 @@
 
     <style>
         @media (max-width: 768px) {
-            .attandance_box {
+            .attandance_box, .outer-container {
                 margin-left: 50px;
                 margin-right: 50px;
             }
+
+            
         }
 
         .attandance_box {
             margin: 0 auto; /* Centers the box */
             max-width: 900px;  /* Maximum width of the box */
-            padding: 20px;  /* Optional padding for inner space */
+            padding: 0 20px 20px 20px;  /* Optional padding for inner space */
             box-sizing: border-box;  /* Ensures padding doesn't affect the width */
             margin-bottom: 70px;
             text-align: center;
@@ -39,7 +41,7 @@
 
         /* Hover effect for student row */
         .student:hover {
-            transform: scale(1.008);
+            transform: scale(1.01);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
@@ -76,8 +78,7 @@
         }
 
         /* Button styling */
-        .submit {
-            align-self: center;
+        .submit, .submit-detail {
             margin-top: 10px;
             padding: 10px 15px;
             background-color: #0275d8;  /* Change this to your desired color */
@@ -89,21 +90,54 @@
         }
 
         /* Button hover effect */
-        .submit:hover {
+        .submit:hover, .submit-detail:hover {
             background-color: #025aa5; /* Change this to a different color on hover */
             transform: scale(1.05);
         }
 
-        /* Optional: Active button state */
-        .submit:active {
-            background-color: #023f6d;  /* Darker color when button is clicked */
+        .submit:active, .submit-detail:hover {
+            background-color: #023f6d; 
             transform: scale(1);
         }
 
-        /* Optional: Button focus state */
-        .submit:focus {
-            outline: none;              /* Remove default outline */
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+        .submit:focus, .submit-detail:hover {
+            outline: none;    
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .outer-container {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {    
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            background: none;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            outline: none;
+            color: #000000;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .selection-list {
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+            gap: 5px;    
+            margin-bottom: 10px;    
         }
     </style>
 
@@ -141,6 +175,45 @@
         <img src="img/download.png" alt="Faculty Photo" class="profile-image">
     </div>
 
+    <!--Selection for the department and sem-->
+    <div class="outer-container">
+        <div class="container">
+            <form>
+                <div class="selection-list">
+                    <select id="department" name="department" required>
+                        <option value="" disabled selected>Select Department</option>
+                        <option value="cs">Computer Science</option>
+                        <option value="it">Information Technology</option>
+                        <option value="ee">Electrical Engineering</option>
+                    </select>
+                
+                    <select id="semester" name="semester" required>
+                        <option value="" disabled selected>Select Semester</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                    </select>
+                
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected>Select Subject</option>
+                        <option value="math">Mathematics</option>
+                        <option value="cs101">CS 101</option>
+                        <option value="phy">Physics</option>
+                    </select>
+                
+                    <select id="lecture" name="lecture" required>
+                        <option value="" disabled selected>Select Lecture </option>
+                        <option value="lec1">Lecture 1</option>
+                        <option value="lec2">Lecture 2</option>
+                        <option value="lec3">Lecture 3</option>
+                    </select>
+                </div>
+                <button class="submit-detail" type="submit">Show Students</button>
+            </form>
+        </div>
+    </div>
+    
     <!-- Attandance -->
     <div class="attandance_box">
         <h1 class="heading">Attandance</h1>
