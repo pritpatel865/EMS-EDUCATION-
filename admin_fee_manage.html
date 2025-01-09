@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Fee Management</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        .labels {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        label {
+            cursor: pointer;
+            padding: 10px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .type {
+            font-weight: bolder;
+        }
+
+        .main-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            justify-content: center;
+            margin: 20px auto 0 auto;
+            width: calc(100% - 20px);
+        }
+
+        .container {
+            padding: 5px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000000;
+            text-align: left;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .submit{
+            display: block;
+            margin: 10px auto 10px auto;
+            padding: 10px 15px;
+            background-color: #0275d8;  /* Change this to your desired color */
+            color: white;               /* Text color */
+            border: none;               /* No border */
+            border-radius: 5px;         /* Rounded corners */
+            cursor: pointer;           /* Pointer cursor on hover */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .submit:hover{
+            background-color: #025aa5; /* Change this to a different color on hover */
+            transform: scale(1.05);
+        }
+
+        .submit:active{
+            background-color: #023f6d; 
+            transform: scale(1);
+        }
+
+        .submit:focus{
+            outline: none;    
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Institute Logo">
+            <h2>Admin Dashboard</h2>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <img src="img/download.png" alt="Admin Avatar">
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="labels">
+            <label id="labelA" class="type" style="box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);" onclick="showContent('A')">Record Payment</label>
+            <label id="labelB" class="type" style="background-color: #c4c4c4;" onclick="showContent('B')">Add Student</label>
+            <label id="labelC" class="type" style="background-color: #c4c4c4;" onclick="showContent('C')">View Fee Status</label>
+        </div>
+        <div class="content" id="contentA">
+            <h2>Record Payment</h2>
+            <form id="paymentForm">
+                <div class="container">
+                    <table>
+                        <tr class="form-group">
+                            <td>
+                                <label for="studentName">Student Name</label>
+                            </td>
+                            <td>
+                                <input type="text" id="studentName" name="studentName" placeholder="Enter student's name" required>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="enrollment">Enrollment No</label>
+                            </td>
+                            <td>
+                                <input type="text" id="enrollment" name="enrollment" placeholder="Enter Enrollment No" required>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="amountPaid">Amount Paid</label>
+                            </td>
+                            <td>
+                                <input type="number" id="amountPaid" name="amountPaid" placeholder="Enter amount paid" required>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="paymentDate">Payment Date</label>
+                            </td>
+                            <td>
+                                <input type="date" id="paymentDate" name="paymentDate" required>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="paymentMethod">Payment Method</label>
+                            </td>
+                            <td>
+                                <select id="paymentMethod" name="paymentMethod" required>
+                                    <option value="" selected disabled>Select payment method</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="bank">Bank Transfer</option>
+                                    <option value="card">Credit/Debit Card</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="transactionId">transaction ID</label>
+                            </td>
+                            <td>
+                                <input type="number" id="transactionId" name="transactionId" placeholder="Enter Transaction ID" required>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <button class="submit" type="submit">Submit Payment</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content hidden" id="contentB">
+            <h2>Add Student</h2>
+            <form id="addStudentForm">
+                <div class="container">
+                    <table>
+                        <tr class="form-group">
+                            <td>
+                                <label for="studentName">Student Name</label>
+                            </td>
+                            <td>
+                                <input type="text" id="studentName" name="studentName" placeholder="Enter student's name" required>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="enrollmentNumber">Enrollment Number</label>
+                            </td>
+                            <td>
+                                <input type="number" id="enrollmentNumber" name="enrollmentNumber" placeholder="Enter enrollment number" required>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="degree">Degree</label>
+                            </td>
+                            <td>
+                                <select id="degree" name="degree" required>
+                                    <option value="" selected disabled>Select degree</option>
+                                    <option value="bachelor">Bachelor's</option>
+                                    <option value="master">Master's</option>
+                                    <option value="phd">PhD</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="branch">Branch</label>
+                            </td>
+                            <td>
+                                <select id="branch" name="branch" required>
+                                    <option value="" selected disabled>Select branch</option>
+                                    <option value="computerScience">Computer Science</option>
+                                    <option value="mechanical">Mechanical Engineering</option>
+                                    <option value="civil">Civil Engineering</option>
+                                    <option value="electrical">Electrical Engineering</option>
+                                    <option value="electronics">Electronics and Communication</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="semester">Semester</label>
+                            </td>
+                            <td>
+                                <select id="semester" name="semester" required>
+                                    <option value="" selected disabled>Select semester</option>
+                                    <option value="1">1st Semester</option>
+                                    <option value="2">2nd Semester</option>
+                                    <option value="3">3rd Semester</option>
+                                    <option value="4">4th Semester</option>
+                                    <option value="5">5th Semester</option>
+                                    <option value="6">6th Semester</option>
+                                    <option value="7">7th Semester</option>
+                                    <option value="8">8th Semester</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="mobileNumber">Mobile Number</label>
+                            </td>
+                            <td>
+                                <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" pattern="[0-9]{10}" required>
+                            </td>
+                        </tr>
+                        <tr class="form-group">
+                            <td>
+                                <label for="email">Email Address</label>
+                            </td>
+                            <td>
+                                <input type="email" id="email" name="email" placeholder="Enter email address" required>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <button class="submit" type="submit">Add Student</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content hidden" id="contentC">
+            <h2>Fee Status</h2>
+            <form id="addStudentSimpleForm">
+                <div class="container">
+                    <table>
+                        <tr class="form-group">
+                            <td>
+                                <label for="enrollmentNumber">Enrollment Number</label>
+                            </td>
+                            <td>
+                                <input type="number" id="enrollmentNumber" name="enrollmentNumber" placeholder="Enter enrollment number" required>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <button class="submit" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+            <div class="container">
+                <h2>Aryan Sharma</h2>
+                <table border="1" cellspacing="0" cellpadding="10">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Total Fee</th>
+                            <th>Paid Fee</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Semesters 1-4 with full payment -->
+                        <tr>
+                            <td>1st Semester</td>
+                            <td>₹30,000</td>
+                            <td>₹30,000</td>
+                            <td style="color: green; font-weight: bold;">Complete</td>
+                        </tr>
+                        <tr>
+                            <td>2nd Semester</td>
+                            <td>₹30,000</td>
+                            <td>₹30,000</td>
+                            <td style="color: green; font-weight: bold;">Complete</td>
+                        </tr>
+                        <tr>
+                            <td>3rd Semester</td>
+                            <td>₹30,000</td>
+                            <td>₹30,000</td>
+                            <td style="color: green; font-weight: bold;">Complete</td>
+                        </tr>
+                        <tr>
+                            <td>4th Semester</td>
+                            <td>₹30,000</td>
+                            <td>₹30,000</td>
+                            <td style="color: green; font-weight: bold;">Complete</td>
+                        </tr>
+                        <!-- Semester 5 with partial payment -->
+                        <tr>
+                            <td>5th Semester</td>
+                            <td>₹30,000</td>
+                            <td>₹15,000</td>
+                            <td style="color: red; font-weight: bold;">Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        function showContent(label) {
+            const allContents = document.querySelectorAll('.content');
+            allContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            const selectedContent = document.getElementById('content' + label);
+            if (selectedContent) {
+                selectedContent.classList.remove('hidden');
+            }
+
+            const labels = document.querySelectorAll('.labels label');
+            labels.forEach(labelElement => {
+                labelElement.style.backgroundColor = '#c4c4c4';
+                labelElement.style.boxShadow = "";
+            });
+
+            const selectedLabel = document.getElementById('label' + label);
+            if (selectedLabel) {
+                selectedLabel.style.backgroundColor = '#ffffff';
+                selectedLabel.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+            }
+        }
+    </script>
+</body>
+</html>

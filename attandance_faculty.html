@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Dashboard - Efficient Management System</title>
+    <title>Attandance</title>
     <link rel="stylesheet" href="dashboard.css">
 
     <style>
@@ -107,7 +107,7 @@
 
         .outer-container {
             margin: 0 auto;
-            max-width: 1200px;
+            max-width: 1500px;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -121,7 +121,7 @@
             text-align: center;
         }
 
-        select {
+        select, #dateInput {
             width: 100%;
             padding: 10px;
             background: none;
@@ -131,6 +131,7 @@
             color: #000000;
             font-size: 18px;
             margin-top: 10px;
+            box-sizing: border-box;
         }
 
         .selection-list {
@@ -208,6 +209,9 @@
                         <option value="lec2">Lecture 2</option>
                         <option value="lec3">Lecture 3</option>
                     </select>
+                    <div class="date-container">
+                        <input type="date" id="dateInput" value="2025-01-01" required>
+                    </div>
                 </div>
                 <button class="submit-detail" type="submit">Show Students</button>
             </form>
