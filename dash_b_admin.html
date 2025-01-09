@@ -6,6 +6,63 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Additional CSS for the notification section */
+        .notification-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .notification-form input, .notification-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .notification-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .notification-form button:hover {
+            background-color: #45a049;
+        }
+
+        .notification-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .notification-list li {
+            background-color: #e8e8e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .notification-list h4 {
+            margin: 0;
+        }
+
+        .notification-list p {
+            margin: 5px 0 0;
+        }
+
+        .notification-list .date {
+            font-size: 12px;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
 
@@ -46,6 +103,62 @@
         </div>
     </div>
 
-    
+    <!-- Notification Section -->
+    <div class="notification-section">
+        <h3>Create and Send Notification</h3>
+        <form class="notification-form" id="notification-form">
+            <label for="notification-message">Message</label>
+            <textarea id="notification-message" placeholder="Enter notification message here..." rows="4"></textarea>
+
+            <label for="notification-recipients">Select Recipients</label>
+            <select id="notification-recipients">
+                <option value="students">All Students</option>
+                <option value="faculty">All Faculty</option>
+                <option value="both">Students & Faculty</option>
+            </select>
+
+            <button type="submit">Send Notification</button>
+        </form>
+
+        <h4>Sent Notifications</h4>
+        <ul class="notification-list" id="notification-list">
+            <!-- Notifications will appear here -->
+        </ul>
+    </div>
+
+    <script>
+        // JavaScript to handle notification submission
+        document.getElementById('notification-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const message = document.getElementById('notification-message').value;
+            const recipients = document.getElementById('notification-recipients').value;
+
+            if (message.trim() === '') {
+                alert('Please enter a notification message!');
+                return;
+            }
+
+            // Create a new notification entry
+            const notificationList = document.getElementById('notification-list');
+            const listItem = document.createElement('li');
+
+            const currentDate = new Date();
+            const dateFormatted = currentDate.toLocaleString();
+
+            listItem.innerHTML = `
+                <h4>Notification to ${recipients === 'both' ? 'Students & Faculty' : recipients}</h4>
+                <p>${message}</p>
+                <p class="date">${dateFormatted}</p>
+            `;
+
+            // Append the new notification to the list
+            notificationList.appendChild(listItem);
+
+            // Clear the form
+            document.getElementById('notification-message').value = '';
+        });
+    </script>
+
 </body>
 </html>
