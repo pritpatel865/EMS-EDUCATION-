@@ -1,7 +1,7 @@
 const heroImages = [
-    "img/hero.bg.webp",     // First image
-    "img/hero1.webp",        // Second image
-    "img/hero2.webp",        // Third image
+    "img/hero.bg.webp",     
+    "img/hero1.webp",       
+    "img/hero2.webp",       
   ];
   
   let currentIndex = 0;
