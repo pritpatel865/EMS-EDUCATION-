@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Management</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Additional CSS for the notification section */
+        .notification-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .notification-form label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .notification-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .notification-form textarea:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+
+        .notification-form textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .notification-form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+            background-color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .notification-form select:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+        }
+
+        .notification-form select:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        .notification-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .notification-form button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .notification-form button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .notification-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .notification-list li {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification-list li.unread {
+            background-color: #fff;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .notification-list h4 {
+            margin: 0;
+            color: #333;
+        }
+
+        .notification-list p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+
+        .notification-list .date {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .notification-list .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .notification-list .actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .notification-list .actions button:hover {
+            color: #000;
+        }
+
+        .notification-counter {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Institute Logo">
+            <h2>Admin Dashboard</h2>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <img src="img/download.png" alt="Admin Avatar">
+            <span id="notification-count" class="notification-counter">0</span>
+        </div>
+    </div>
+
+    <div class="dashboard-header">
+        <div class="admin-info">
+            <h2>Notification Management</h2>
+            <p>Send and manage notifications efficiently.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-content">
+        <div class="notification-section">
+            <h3>Create and Send Notification</h3>
+            <form class="notification-form" id="notification-form">
+                <div class="form-group">
+                    <label for="notification-message">Message</label>
+                    <textarea id="notification-message" placeholder="Enter notification message here..." rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="notification-recipients">Select Recipients</label>
+                    <select id="notification-recipients">
+                        <option value="students">All Students</option>
+                        <option value="faculty">All Faculty</option>
+                        <option value="both">Students & Faculty</option>
+                    </select>
+                </div>
+
+                <button type="submit">Send Notification</button>
+            </form>
+
+            <h4>Sent Notifications</h4>
+            <ul class="notification-list" id="notification-list">
+                <!-- Notifications will appear here -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let notificationCount = 0;
+
+        document.getElementById('notification-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const message = document.getElementById('notification-message').value;
+            const recipients = document.getElementById('notification-recipients').value;
+
+            if (message.trim() === '') {
+                alert('Please enter a notification message!');
+                return;
+            }
+
+            // Create a new notification entry
+            const notificationList = document.getElementById('notification-list');
+            const listItem = document.createElement('li');
+            listItem.classList.add('unread');
+
+            const currentDate = new Date();
+            const dateFormatted = currentDate.toLocaleString();
+
+            listItem.innerHTML = `
+                <div>
+                    <h4>Notification to ${recipients === 'both' ? 'Students & Faculty' : recipients}</h4>
+                    <p>${message}</p>
+                    <p class="date">${dateFormatted}</p>
+                </div>
+                <div class="actions">
+                    <button onclick="markAsRead(this)"><i class="fas fa-check"></i></button>
+                    <button onclick="deleteNotification(this)"><i class="fas fa-trash"></i></button>
+                </div>
+            `;
+
+            // Append the new notification to the list
+            notificationList.appendChild(listItem);
+
+            // Increment notification counter
+            notificationCount++;
+            updateNotificationCounter();
+
+            // Clear the form
+            document.getElementById('notification-message').value = '';
+        });
+
+        function markAsRead(button) {
+            const listItem = button.closest('li');
+            listItem.classList.remove('unread');
+            notificationCount--;
+            updateNotificationCounter();
+        }
+
+        function deleteNotification(button) {
+            const listItem = button.closest('li');
+            listItem.remove();
+            if (listItem.classList.contains('unread')) {
+                notificationCount--;
+                updateNotificationCounter();
+            }
+        }
+
+        function updateNotificationCounter() {
+            const counter = document.getElementById('notification-count');
+            counter.textContent = notificationCount;
+        }
+    </script>
+
+</body>
+</html>
