@@ -6,6 +6,8 @@
     <title>Admin Fee Management</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
 
     <style>
         .labels {
@@ -94,6 +96,43 @@
         table {
             margin: 0 auto;
         }
+
+        .tableContainer {
+            width: 100%;
+            max-width: 100%;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        /* Table styles */
+        #feeStatusTable {
+            width: 100%;
+            table-layout: auto;
+            border-collapse: collapse;
+        }
+
+        /* Table header styles */
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Ensures long content wraps properly */
+        td {
+            word-wrap: break-word;
+        }
+
+        /* Media query for smaller devices (like phones) */
+        @media (max-width: 768px) {
+            .tableContainerr {
+                padding: 10px;
+            }
+
+            feeStatusTable {
+                width: 100%;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -112,8 +151,7 @@
     <div class="main-container">
         <div class="labels">
             <label id="labelA" class="type" style="box-shadow: 0 4px 8px rgb(0, 0, 0, 0.2);" onclick="showContent('A')">Record Payment</label>
-            <label id="labelB" class="type" style="background-color: #c4c4c4;" onclick="showContent('B')">Add Student</label>
-            <label id="labelC" class="type" style="background-color: #c4c4c4;" onclick="showContent('C')">View Fee Status</label>
+            <label id="labelB" class="type" style="background-color: #c4c4c4;" onclick="showContent('B')">View Fee Status</label>
         </div>
         <div class="content" id="contentA">
             <h2>Record Payment</h2>
@@ -181,96 +219,6 @@
             </form>
         </div>
         <div class="content hidden" id="contentB">
-            <h2>Add Student</h2>
-            <form id="addStudentForm">
-                <div class="container">
-                    <table>
-                        <tr class="form-group">
-                            <td>
-                                <label for="studentName">Student Name</label>
-                            </td>
-                            <td>
-                                <input type="text" id="studentName" name="studentName" placeholder="Enter student's name" required>
-                            </td>
-                        </tr>
-                        <tr class="form-group">
-                            <td>
-                                <label for="enrollmentNumber">Enrollment Number</label>
-                            </td>
-                            <td>
-                                <input type="number" id="enrollmentNumber" name="enrollmentNumber" placeholder="Enter enrollment number" required>
-                            </td>
-                        </tr>
-                        <tr class="form-group">
-                            <td>
-                                <label for="degree">Degree</label>
-                            </td>
-                            <td>
-                                <select id="degree" name="degree" required>
-                                    <option value="" selected disabled>Select degree</option>
-                                    <option value="bachelor">Bachelor's</option>
-                                    <option value="master">Master's</option>
-                                    <option value="phd">PhD</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="form-group">
-                            <td>
-                                <label for="branch">Branch</label>
-                            </td>
-                            <td>
-                                <select id="branch" name="branch" required>
-                                    <option value="" selected disabled>Select branch</option>
-                                    <option value="computerScience">Computer Science</option>
-                                    <option value="mechanical">Mechanical Engineering</option>
-                                    <option value="civil">Civil Engineering</option>
-                                    <option value="electrical">Electrical Engineering</option>
-                                    <option value="electronics">Electronics and Communication</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="form-group">
-                            <td>
-                                <label for="semester">Semester</label>
-                            </td>
-                            <td>
-                                <select id="semester" name="semester" required>
-                                    <option value="" selected disabled>Select semester</option>
-                                    <option value="1">1st Semester</option>
-                                    <option value="2">2nd Semester</option>
-                                    <option value="3">3rd Semester</option>
-                                    <option value="4">4th Semester</option>
-                                    <option value="5">5th Semester</option>
-                                    <option value="6">6th Semester</option>
-                                    <option value="7">7th Semester</option>
-                                    <option value="8">8th Semester</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr class="form-group">
-                            <td>
-                                <label for="mobileNumber">Mobile Number</label>
-                            </td>
-                            <td>
-                                <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Enter mobile number" pattern="[0-9]{10}" required>
-                            </td>
-                        </tr>
-                        <tr class="form-group">
-                            <td>
-                                <label for="email">Email Address</label>
-                            </td>
-                            <td>
-                                <input type="email" id="email" name="email" placeholder="Enter email address" required>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="form-group">
-                        <button class="submit" type="submit">Add Student</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="content hidden" id="contentC">
             <h2>Fee Status</h2>
             <form id="addStudentSimpleForm">
                 <div class="container">
@@ -285,56 +233,30 @@
                         </tr>
                     </table>
                     <div class="form-group">
-                        <button class="submit" type="submit">Submit</button>
+                        <button class="submit" type="button" onclick="generateTable()">Submit</button>
                     </div>
                 </div>
             </form>
             <div class="container">
-                <h2>Aryan Sharma</h2>
-                <table border="1" cellspacing="0" cellpadding="10">
-                    <thead>
-                        <tr>
-                            <th>Semester</th>
-                            <th>Total Fee</th>
-                            <th>Paid Fee</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Semesters 1-4 with full payment -->
-                        <tr>
-                            <td>1st Semester</td>
-                            <td>₹30,000</td>
-                            <td>₹30,000</td>
-                            <td style="color: green; font-weight: bold;">Complete</td>
-                        </tr>
-                        <tr>
-                            <td>2nd Semester</td>
-                            <td>₹30,000</td>
-                            <td>₹30,000</td>
-                            <td style="color: green; font-weight: bold;">Complete</td>
-                        </tr>
-                        <tr>
-                            <td>3rd Semester</td>
-                            <td>₹30,000</td>
-                            <td>₹30,000</td>
-                            <td style="color: green; font-weight: bold;">Complete</td>
-                        </tr>
-                        <tr>
-                            <td>4th Semester</td>
-                            <td>₹30,000</td>
-                            <td>₹30,000</td>
-                            <td style="color: green; font-weight: bold;">Complete</td>
-                        </tr>
-                        <!-- Semester 5 with partial payment -->
-                        <tr>
-                            <td>5th Semester</td>
-                            <td>₹30,000</td>
-                            <td>₹15,000</td>
-                            <td style="color: red; font-weight: bold;">Pending</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="tableContainer" class="hidden">
+                    <h2>Aryan Sharma</h2>
+                    <div class="table-container">
+                        <table border="1" cellspacing="0" cellpadding="10" id="feeStatusTable">
+                            <thead>
+                                <tr>
+                                    <th>Semester</th>
+                                    <th>Total Fee</th>
+                                    <th>Paid Fee</th>
+                                    <th>Status</th>
+                                    <th>Print</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table row will added dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -363,6 +285,149 @@
                 selectedLabel.style.backgroundColor = '#ffffff';
                 selectedLabel.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
             }
+        }
+
+        // Data for the table
+        const feeData = [
+                {
+                    semester: "1st Semester",
+                    totalFee: "30,000",
+                    paidFee: "30,000",
+                    status: "Complete",
+                },
+                {
+                    semester: "2nd Semester",
+                    totalFee: "30,000",
+                    paidFee: "30,000",
+                    status: "Complete",
+                },
+                {
+                    semester: "3rd Semester",
+                    totalFee: "30,000",
+                    paidFee: "30,000",
+                    status: "Complete",
+                },
+                {
+                    semester: "4th Semester",
+                    totalFee: "30,000",
+                    paidFee: "30,000",
+                    status: "Complete",
+                },
+                {
+                    semester: "5th Semester",
+                    totalFee: "30,000",
+                    paidFee: "15,000",
+                    status: "Pending",
+                },
+            ];
+
+        function populateTable(data) {
+            const tableBody = document.querySelector("#feeStatusTable tbody");
+            tableBody.innerHTML = ""; // Clear any existing rows
+
+            data.forEach((record) => {
+                const row = document.createElement("tr");
+
+                // Semester
+                const semesterCell = document.createElement("td");
+                semesterCell.textContent = record.semester;
+                row.appendChild(semesterCell);
+
+                // Total Fee
+                const totalFeeCell = document.createElement("td");
+                totalFeeCell.textContent = record.totalFee;
+                row.appendChild(totalFeeCell);
+
+                // Paid Fee
+                const paidFeeCell = document.createElement("td");
+                paidFeeCell.textContent = record.paidFee;
+                row.appendChild(paidFeeCell);
+
+                // Status
+                const statusCell = document.createElement("td");
+                statusCell.textContent = record.status;
+                statusCell.style.color = record.status === "Complete" ? "green" : "red";
+                statusCell.style.fontWeight = "bold";
+                row.appendChild(statusCell);
+
+                // Actions (Print Button)
+                const actionsCell = document.createElement("td");
+                const printButton = document.createElement("button");
+                printButton.textContent = "Print Receipt";
+                printButton.className = "print-btn";
+                printButton.style.cssText = `
+                    display: block;
+                    margin: 10px auto;
+                    padding: 10px 15px;
+                    background-color: #0275d8;  /* Change this to your desired color */
+                    color: white;               /* Text color */
+                    border: none;               /* No border */
+                    border-radius: 5px;         /* Rounded corners */
+                    cursor: pointer;           /* Pointer cursor on hover */
+                    transition: transform 0.3s ease, background-color 0.3s ease;
+                `;
+                printButton.onclick = () => printFeeReceipt(record.semester, record.totalFee, record.paidFee);
+                actionsCell.appendChild(printButton);
+                row.appendChild(actionsCell);
+
+                // Append the row to the table
+                tableBody.appendChild(row);
+            });
+        }
+
+        function generateTable() {
+            const tableContainer = document.getElementById("tableContainer");
+            tableContainer.classList.remove("hidden");
+
+            populateTable(feeData);
+        }
+
+        function printFeeReceipt(semester, totalFee, paidFee) {
+            const status = paidFee === totalFee ? "Completed" : "Pending";
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const date = new Date().toLocaleDateString();
+
+            // Title
+            doc.setFont('Times', 'normal');
+            doc.setFontSize(20);
+            doc.text('Sardar Patel College of Engineering', 105, 20, 'center');
+            doc.setFontSize(16);
+            doc.text('Anand', 105, 30, 'center');
+
+            // Receipt Details Section
+            doc.setFontSize(14);
+            doc.text('Receipt No: 108', 20, 40);
+            doc.text('Date: ' + date, 160, 40);
+            doc.text('Name: Aryan Sharma', 20, 50);
+            doc.text('Sem: ' + semester, 20, 60);
+
+            // Table Heade
+            doc.setFontSize(14);
+            doc.text('No', 20, 75);
+            doc.text('Types of Fees', 40, 75);
+            doc.text('Total Fee', 100, 75, 'center');
+            doc.text('Paid Fee', 150, 75, 'center');
+
+            // Table Row 1
+            doc.text('1.', 20, 85);
+            doc.text('TUITION FEE', 40, 85);
+            doc.text(totalFee.toString(), 100, 85, 'center');
+            doc.text(paidFee.toString(), 150, 85, 'center');
+
+            // Status Section (below table)
+            doc.setFontSize(14);
+            doc.text('Status: ' + status, 20, 95);
+            doc.text(paidFee.toString(), 150, 95, 'center');
+
+            // Final Footer
+            doc.setFontSize(16);
+            doc.text('Thank you for your payment!', 105, 115, 'center');
+
+            // Print the document
+            doc.autoPrint();
+            window.open(doc.output('bloburl'), '_blank');
         }
     </script>
 </body>
