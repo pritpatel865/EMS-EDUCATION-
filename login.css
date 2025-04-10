@@ -39,7 +39,7 @@ body {
 /* Login Container Styling */
 .login-container {
     position: relative;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     padding: 40px;
@@ -57,7 +57,7 @@ body {
 
 .register-container {
     position: relative;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     padding: 40px;
