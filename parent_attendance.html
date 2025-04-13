@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Attendance - Efficient Management System</title>
+    <link rel="stylesheet" href="dashboard.css">
+
+    <!-- Google Font for Better Aesthetics -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .user-info img {
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        /* Attendance Section Styles */
+        .attendance-section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .attendance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .attendance-header h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .attendance-header .ask-leave-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .attendance-header .ask-leave-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .attendance-table th, .attendance-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .attendance-table th {
+            background-color: #f4f4f4;
+        }
+
+        .attendance-table .view-details-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .attendance-table .view-details-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Floating Modal for Attendance Details */
+        .details-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 500px) {
+            .details-modal {
+            width: 80%;
+            }
+        }
+
+        .details-modal.active {
+            display: block;
+        }
+
+        .details-modal h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .details-modal table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .details-modal table th, .details-modal table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Institute Logo">
+            <h2>Student Dashboard</h2>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Student-Name</span>
+            <img src="img/download.png" alt="User Profile Image" class="user-avatar">
+        </div>
+    </div>
+
+    <!-- Student Details Section -->
+    <div class="dashboard-header">
+        <div class="student-info">
+            <h2>Student Name</h2>
+            <p><strong>Student Id:</strong> 0000000000</p>
+            <p><strong>Enrollment / Registration Id:</strong> 00000000000000</p>
+        </div>
+        <div class="course-info">
+            <p>SARDAR PATEL CAMPUS OF Engineering (SPEC)</p>
+            <p>BACHELOR OF Information Technology</p>
+            <p>Semester 5</p>
+        </div>
+        <img src="img/download.png" alt="Student Photo" class="profile-image">
+    </div>
+
+    <!-- Attendance Section -->
+    <div class="attendance-section">
+        <div class="attendance-header">
+            <h2>Attendance Report</h2>
+            <button class="ask-leave-btn" style="background-color: #28a745;">Contact Faculty</button>
+        </div>
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Attendance (%)</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-table-body">
+                <!-- Attendance data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Attendance Details Modal -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="details-modal" id="details-modal">
+        <h3>Attendance Details</h3>
+        <table id="details-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Details will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Sample attendance data
+        const attendanceData = {
+        'Artificial Intelligence': [
+            { date: '2025-04-01', status: 'Present' },
+            { date: '2025-04-02', status: 'Absent' },
+            { date: '2025-04-03', status: 'Present' },
+            { date: '2025-04-04', status: 'Present' },
+            { date: '2025-04-05', status: 'Late' },
+            { date: '2025-04-06', status: 'Present' },
+            { date: '2025-04-07', status: 'Absent' },
+            { date: '2025-04-08', status: 'Present' },
+            { date: '2025-04-09', status: 'Present' },
+            { date: '2025-04-10', status: 'Present' },
+        ],
+        'Data Science': [
+            { date: '2025-04-01', status: 'Late' },
+            { date: '2025-04-02', status: 'Present' },
+            { date: '2025-04-03', status: 'Absent' },
+            { date: '2025-04-04', status: 'Present' },
+            { date: '2025-04-05', status: 'Present' },
+            { date: '2025-04-06', status: 'Absent' },
+            { date: '2025-04-07', status: 'Late' },
+            { date: '2025-04-08', status: 'Present' },
+            { date: '2025-04-09', status: 'Present' },
+            { date: '2025-04-10', status: 'Present' },
+        ],
+        'Cloud Computing': [
+            { date: '2025-04-01', status: 'Absent' },
+            { date: '2025-04-02', status: 'Present' },
+            { date: '2025-04-03', status: 'Present' },
+            { date: '2025-04-04', status: 'Present' },
+            { date: '2025-04-05', status: 'Late' },
+            { date: '2025-04-06', status: 'Present' },
+            { date: '2025-04-07', status: 'Absent' },
+            { date: '2025-04-08', status: 'Present' },
+            { date: '2025-04-09', status: 'Present' },
+            { date: '2025-04-10', status: 'Late' },
+        ],
+        'Cyber Security': [
+            { date: '2025-04-01', status: 'Present' },
+            { date: '2025-04-02', status: 'Present' },
+            { date: '2025-04-03', status: 'Absent' },
+            { date: '2025-04-04', status: 'Late' },
+            { date: '2025-04-05', status: 'Present' },
+            { date: '2025-04-06', status: 'Present' },
+            { date: '2025-04-07', status: 'Absent' },
+            { date: '2025-04-08', status: 'Present' },
+            { date: '2025-04-09', status: 'Present' },
+            { date: '2025-04-10', status: 'Present' },
+        ],
+        'Machine Learning': [
+            { date: '2025-04-01', status: 'Late' },
+            { date: '2025-04-02', status: 'Present' },
+            { date: '2025-04-03', status: 'Present' },
+            { date: '2025-04-04', status: 'Present' },
+            { date: '2025-04-05', status: 'Present' },
+            { date: '2025-04-06', status: 'Absent' },
+            { date: '2025-04-07', status: 'Present' },
+            { date: '2025-04-08', status: 'Present' },
+            { date: '2025-04-09', status: 'Absent' },
+            { date: '2025-04-10', status: 'Late' },
+        ],
+        'Blockchain Technology': [
+            { date: '2025-04-01', status: 'Present' },
+            { date: '2025-04-02', status: 'Late' },
+            { date: '2025-04-03', status: 'Absent' },
+            { date: '2025-04-04', status: 'Present' },
+            { date: '2025-04-05', status: 'Present' },
+            { date: '2025-04-06', status: 'Present' },
+            { date: '2025-04-07', status: 'Late' },
+            { date: '2025-04-08', status: 'Absent' },
+            { date: '2025-04-09', status: 'Present' },
+            { date: '2025-04-10', status: 'Present' },
+        ],
+    };
+
+
+        // Populate attendance table
+        const tableBody = document.getElementById('attendance-table-body');
+        Object.keys(attendanceData).forEach(subject => {
+            const records = attendanceData[subject];
+            const totalDays = records.length;
+            const presentDays = records.filter(record => record.status === 'Present').length;
+            const attendancePercentage = (presentDays / totalDays) * 100;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${subject}</td>
+                <td>${attendancePercentage.toFixed(2)}%</td>
+                <td><button class="view-details-btn" onclick="showDetails('${subject}')">View Details</button></td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // Show attendance details in modal
+        function showDetails(subject) {
+            const records = attendanceData[subject];
+            const detailsTable = document.getElementById('details-table').querySelector('tbody');
+            detailsTable.innerHTML = ''; // Clear previous details
+
+            records.forEach(record => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${record.date}</td>
+                    <td>${record.status}</td>
+                `;
+                detailsTable.appendChild(row);
+            });
+
+            document.getElementById('modal-overlay').classList.add('active');
+            document.getElementById('details-modal').classList.add('active');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('modal-overlay').addEventListener('click', () => {
+            document.getElementById('modal-overlay').classList.remove('active');
+            document.getElementById('details-modal').classList.remove('active');
+        });
+    </script>
+</body>
+</html>
